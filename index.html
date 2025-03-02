@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankit Pujara – Resume</title>
+    <title>My Resume</title>
     <style>
         body, html {
             margin: 0;
@@ -60,13 +60,15 @@
 
     <script>
         function downloadPDF() {
-            window.location.href = 'index.pdf';
+            window.location.href = 'index.pdf';  // This triggers download
         }
 
         function printPDF() {
-            var pdfFrame = document.getElementById('pdfViewer').contentWindow;
-            pdfFrame.focus();
-            pdfFrame.print();
+            var iframe = document.getElementById('pdfViewer');  // Get the iframe
+            var iframeWindow = iframe.contentWindow || iframe; // Get the iframe's content window
+
+            // Trigger print directly on the iframe content
+            iframeWindow.print();
         }
     </script>
 
