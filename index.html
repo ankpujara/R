@@ -55,7 +55,7 @@
 
     <!-- PDF Viewer -->
     <div class="pdf-container">
-        <iframe id="pdfViewer" src="index.pdf"></iframe>
+        <embed src="index.pdf" type="application/pdf" width="100%" height="100%">
     </div>
 
     <script>
@@ -64,11 +64,13 @@
         }
 
         function printPDF() {
-            var iframe = document.getElementById('pdfViewer');  // Get the iframe
-            var iframeWindow = iframe.contentWindow || iframe; // Get the iframe's content window
-
-            // Trigger print directly on the iframe content
-            iframeWindow.print();
+            var iframe = document.createElement('iframe');
+            iframe.style.position = 'absolute';
+            iframe.style.width = '0';
+            iframe.style.height = '0';
+            iframe.src = 'index.pdf';
+            document.body.appendChild(iframe);
+            iframe.contentWindow.print();
         }
     </script>
 
